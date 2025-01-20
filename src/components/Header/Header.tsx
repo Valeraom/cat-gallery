@@ -8,7 +8,7 @@ const getLinkClass = ({ isActive }: { isActive: boolean }) => {
 
 export const Header = () => {
   return (
-    <div className="flex items-center justify-evenly border-b-2 py-3">
+    <div className="flex items-center justify-evenly border-b-2 py-3 bg-secondary">
       <Link className="flex items-center space-x-4" to={Paths.HOME}>
         <img
           className="w-24"
