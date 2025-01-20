@@ -1,4 +1,5 @@
 import { ReactNode, useEffect, useState } from 'react';
+
 import CatsContext from './CatsContext';
 import { Cat } from '../types';
 

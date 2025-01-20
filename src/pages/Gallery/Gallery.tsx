@@ -1,28 +1,66 @@
-import { useContext } from 'react';
-import { CatCard } from '../../components';
-import { SearchSelect } from '../../components/SearchSelect/SearchSelect';
-import { useCats } from '../../hooks/useCats';
+import { useContext, useState } from 'react';
+import ReactPaginate from 'react-paginate';
+
+import { useCats } from '../../hooks';
 import { Cat } from '../../types';
 import CatsContext from '../../context/CatsContext';
 
+import { CatCard, ErrorMessage, SearchSelect } from '../../components';
+import styles from './styles.module.scss';
+
 export const Gallery = () => {
   const { queries } = useContext(CatsContext);
-  const { data, isLoading } = useCats(queries);
-  console.log(data);
+  const { data, isLoading, isError } = useCats(queries);
+
+  const [currentPage, setCurrentPage] = useState<number>(0);
+  const itemsPerPage = 10;
+
+  const isDataValid = !isError;
+
+  const handlePageClick = (selectedObject: { selected: number }) => {
+    setCurrentPage(selectedObject.selected);
+  };
+
+  const preparedData = isDataValid
+    ? data?.slice(currentPage * itemsPerPage, (currentPage + 1) * itemsPerPage)
+    : [];
 
   return (
     <div>
       <h1 className="title mb-8">Gallery</h1>
 
-      <SearchSelect />
+      <SearchSelect onResetPage={() => setCurrentPage(0)} />
 
-      <div className="catalog">
-        {isLoading ? (
+      <div className="catalog mb-10">
+        {isLoading && !isError && (
           <p className="text-center col-span-full">Loading...</p>
-        ) : (
-          data?.map((cat: Cat) => <CatCard cat={cat} />)
         )}
+
+        {isError && <ErrorMessage />}
+
+        {!isError && !isLoading && data?.length === 0 && (
+          <p className="text-center col-span-full">No cats...</p>
+        )}
+
+        {!isError &&
+          !isLoading &&
+          data?.length !== 0 &&
+          preparedData.map((cat: Cat) => <CatCard cat={cat} />)}
       </div>
+
+      {!isLoading && !isError && data?.length !== 0 && (
+        <ReactPaginate
+          previousLabel={'<'}
+          nextLabel={'>'}
+          breakLabel={'...'}
+          pageCount={Math.ceil(data?.length / itemsPerPage)}
+          marginPagesDisplayed={2}
+          pageRangeDisplayed={5}
+          onPageChange={handlePageClick}
+          containerClassName={styles.pagination}
+          activeClassName={styles.active}
+        />
+      )}
     </div>
   );
 };

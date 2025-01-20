@@ -1,8 +1,10 @@
 import { HashRouter as Router, Route, Routes } from 'react-router-dom';
+
 import { Paths } from './enums';
-import App from './App';
 import { Favourites, Gallery, Home, NotFound } from './pages';
 import { CatsProvider } from './context/CatsProvider';
+
+import App from './App';
 
 export const Root = () => {
   return (

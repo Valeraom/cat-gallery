@@ -1,8 +1,10 @@
 import { FC, useContext } from 'react';
-import heartLiked from '../../assets/images/icons/heart-liked.svg';
-import heartUnliked from '../../assets/images/icons/heart-unliked.svg';
+
 import { Cat } from '../../types';
 import CatsContext from '../../context/CatsContext';
+
+import heartLiked from '../../assets/images/icons/heart-liked.svg';
+import heartUnliked from '../../assets/images/icons/heart-unliked.svg';
 
 interface Props {
   cat: Cat;

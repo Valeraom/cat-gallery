@@ -10,11 +10,11 @@
 
 @layer components {
   .link {
-    @apply hover:text-accent duration-300;
+    @apply hover:text-accent duration-300 text-lg sm:text-xl;
   }
 
   .title {
-    @apply text-3xl text-center;
+    @apply text-xl sm:text-2xl 2xl:text-3xl text-center;
   }
 
   .catalog {

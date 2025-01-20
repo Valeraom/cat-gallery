@@ -4,4 +4,9 @@ export enum Breeds {
   CHAUSIE = 'chau',
   AEGEAN = 'aege',
   CYMRIC = 'cymr',
+  KORAT = 'kora',
+  KURILIAN = 'kuri',
+  SOMALI = 'soma',
+  MANX = 'manx',
+  TOYGER = 'toyg',
 }

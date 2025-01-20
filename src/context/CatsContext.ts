@@ -1,4 +1,5 @@
 import { createContext } from 'react';
+
 import { Cat } from '../types';
 
 interface InitialCatsContext {
@@ -8,6 +9,11 @@ interface InitialCatsContext {
   toggleFavourites: (cat: Cat) => void;
 }
 
-const CatsContext = createContext<InitialCatsContext | undefined>(undefined);
+const CatsContext = createContext<InitialCatsContext>({
+  queries: [],
+  changeQueries: () => {},
+  favourites: [],
+  toggleFavourites: () => {},
+});
 
 export default CatsContext;

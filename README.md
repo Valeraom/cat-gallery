@@ -1,50 +1,46 @@
-# React + TypeScript + Vite
+# Cat Gallery
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Welcome to the Cat Gallery project! This is an interactive web gallery showcasing various cat breeds, where users can filter images based on breed and add their favorite cats to a personalized collection.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Project Purpose
 
-## Expanding the ESLint configuration
+The purpose of the Cat Gallery project is to provide users with an enjoyable way to explore different cat breeds, filter them by breed, and save their favorite images in a personalized list.
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+---
 
-- Configure the top-level `parserOptions` property like this:
+## Technologies Used
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+- **React**: For building user interfaces and managing component state.
+- **TypeScript**: For static typing, ensuring more reliable and robust code.
+- **Vite**: For fast project setup and optimization.
+- **SCSS**: For styling and custom design.
+- **ESLint + Prettier**: To maintain code quality and consistency.
+- **GitHub Actions**: For automating the deployment process.
+- **The Cat API**: To fetch images and information about various cat breeds.
+- **React Hooks**: To manage state and side effects efficiently.
+- **React Query**: For managing data fetching, caching, and synchronization with external APIs.
+- **Tailwind CSS**: For utility-first styling and responsive design.
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+---
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+## Key Features
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
+- **Breed Filtering**: Allows users to filter cat images based on selected breeds.
+- **Favorites**: Users can add their favorite cats to a personal collection.
+- **Responsive Layout**: The gallery adapts to different screen sizes for a smooth mobile and desktop experience.
+
+---
+
+## Demo:
+
+[Demo](https://cat-gallery-azure.vercel.app/)
+
+## Project Setup Overview
+
+To set up the Nice Gadgets online store project, we followed these main steps:
+
+1. Clone the repo.
+2. Run npm install (or just npm i).
+3. Run npm start.

@@ -1,6 +1,7 @@
 import { useQuery } from '@tanstack/react-query';
-import { getData } from '../api';
 import { useEffect } from 'react';
+
+import { getData } from '../api';
 
 export const useCats = (breeds: string[]) => {
   const { data, isLoading, isError, refetch } = useQuery({

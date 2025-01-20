@@ -1,7 +1,9 @@
 import { useContext } from 'react';
-import CatsContext from '../../context/CatsContext';
-import { CatCard } from '../../components';
+
 import { Cat } from '../../types';
+import CatsContext from '../../context/CatsContext';
+
+import { CatCard } from '../../components';
 
 export const Favourites = () => {
   const { favourites } = useContext(CatsContext);
