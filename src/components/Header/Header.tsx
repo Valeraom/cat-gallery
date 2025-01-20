@@ -1,7 +1,15 @@
+import { Link, NavLink } from 'react-router-dom';
+import { Paths } from '../../enums';
+import cn from 'classnames';
+
+const getLinkClass = ({ isActive }: { isActive: boolean }) => {
+  return cn('link', { 'text-accent': isActive });
+};
+
 export const Header = () => {
   return (
     <div className="flex items-center justify-evenly border-b-2 py-3">
-      <a href="" className="flex items-center space-x-4">
+      <Link className="flex items-center space-x-4" to={Paths.HOME}>
         <img
           className="w-24"
           src="src/assets/images/logo.png"
@@ -9,19 +17,19 @@ export const Header = () => {
         />
 
         <p className="text-2xl font-medium">Cat Gallery</p>
-      </a>
+      </Link>
 
       <ul className="flex space-x-6 text-xl">
         <li>
-          <a className="link" href="">
+          <NavLink className={getLinkClass} to={Paths.GALLERY}>
             Gallery
-          </a>
+          </NavLink>
         </li>
 
         <li>
-          <a className="link" href="">
-            Favorites
-          </a>
+          <NavLink className={getLinkClass} to={Paths.FAVOURITES}>
+            Favourites
+          </NavLink>
         </li>
       </ul>
     </div>
