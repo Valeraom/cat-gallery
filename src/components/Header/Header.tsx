@@ -13,7 +13,7 @@ export const Header = () => {
       <Link className="flex items-center space-x-4" to={Paths.HOME}>
         <img
           className="w-20 md:w-24"
-          src="src/assets/images/logo.png"
+          src="/src/assets/images/logo.png"
           alt="Cat Gallery Logo"
         />
 
