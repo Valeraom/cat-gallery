@@ -16,7 +16,9 @@ export const Favourites = () => {
         {favourites.length === 0 ? (
           <p className="text-center col-span-full">No favourite cats</p>
         ) : (
-          favourites.map((favouriteCat: Cat) => <CatCard cat={favouriteCat} />)
+          favourites.map((favouriteCat: Cat) => (
+            <CatCard key={favouriteCat.id} cat={favouriteCat} />
+          ))
         )}
       </div>
     </div>

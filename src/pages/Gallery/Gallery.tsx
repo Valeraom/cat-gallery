@@ -45,7 +45,7 @@ export const Gallery = () => {
         {!isError &&
           !isLoading &&
           data?.length !== 0 &&
-          preparedData.map((cat: Cat) => <CatCard cat={cat} />)}
+          preparedData.map((cat: Cat) => <CatCard key={cat.id} cat={cat} />)}
       </div>
 
       {!isLoading && !isError && data?.length !== 0 && (
