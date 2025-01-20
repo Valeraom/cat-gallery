@@ -1,4 +1,4 @@
-import { ReactNode, useState } from 'react';
+import { ReactNode, useEffect, useState } from 'react';
 import CatsContext from './CatsContext';
 import { Cat } from '../types';
 
@@ -8,17 +8,36 @@ interface Props {
 
 export const CatsProvider = ({ children }: Props) => {
   const [queries, setQueries] = useState<string[]>([]);
-  const [favourites, setFavoutites] = useState<Cat[]>([]);
+  const [favourites, setFavourites] = useState<Cat[]>([]);
 
-  const addFavouriteCat = (cat: Cat) => {
-    setFavoutites(current => [...current, cat]);
+  const toggleFavourites = (cat: Cat) => {
+    const isFavourite =
+      favourites.find((catItem: Cat) => cat.id === catItem.id) || false;
+
+    if (isFavourite) {
+      setFavourites(current => {
+        const updatedFavourites = [...current].filter(
+          (catItem: Cat) => catItem.id !== cat.id,
+        );
+        localStorage.setItem('favourites', JSON.stringify(updatedFavourites));
+        return updatedFavourites;
+      });
+    } else {
+      setFavourites(current => {
+        const updatedFavourites = [...current, cat];
+        localStorage.setItem('favourites', JSON.stringify(updatedFavourites));
+        return updatedFavourites;
+      });
+    }
   };
 
-  const deleteFavouriteCat = (catId: string) => {
-    setFavoutites(current =>
-      [...current].filter(catItem => catId !== catItem.id),
-    );
-  };
+  useEffect(() => {
+    const currentFavourites = localStorage.getItem('favourites');
+
+    if (currentFavourites) {
+      setFavourites(JSON.parse(currentFavourites));
+    }
+  }, []);
 
   const changeQueries = (queries: string[]) => {
     setQueries(queries);
@@ -30,8 +49,7 @@ export const CatsProvider = ({ children }: Props) => {
         queries,
         changeQueries,
         favourites,
-        addFavouriteCat,
-        deleteFavouriteCat,
+        toggleFavourites,
       }}
     >
       {children}

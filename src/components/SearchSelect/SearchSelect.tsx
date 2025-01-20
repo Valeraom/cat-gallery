@@ -36,7 +36,7 @@ export const SearchSelect = () => {
           options={availableBreeds}
           value={selectedBreeds}
           onChange={handleChangeQueries}
-          placeholder="Оберіть породи"
+          placeholder="Choose breed"
           onInputChange={() => {}}
           onMenuOpen={() => {}}
         />

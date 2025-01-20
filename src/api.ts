@@ -3,7 +3,7 @@ const API_KEY =
 
 export const getData = (breeds?: string[]) => {
   const preparedBreeds = breeds?.join(',');
-  const request = `https://api.thecatapi.com/v1/images/search?limit=30${breeds?.length !== 0 ? `&breed_ids=${preparedBreeds}` : ''}&api_key=${API_KEY}`;
+  const request = `https://api.thecatapi.com/v1/images/search?limit=30${breeds?.length !== 0 ? `&breed_ids=${preparedBreeds}` : ''}&page='0-10'&api_key=${API_KEY}`;
 
   return fetch(request)
     .then(res => res.json())

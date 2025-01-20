@@ -5,8 +5,7 @@ interface InitialCatsContext {
   queries: string[];
   changeQueries: (queries: string[]) => void;
   favourites: Cat[];
-  addFavouriteCat: (cat: Cat) => void;
-  deleteFavouriteCat: (catId: string) => void;
+  toggleFavourites: (cat: Cat) => void;
 }
 
 const CatsContext = createContext<InitialCatsContext | undefined>(undefined);

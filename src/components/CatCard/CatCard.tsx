@@ -1,20 +1,31 @@
-import { FC } from 'react';
+import { FC, useContext } from 'react';
 import heartLiked from '../../assets/images/icons/heart-liked.svg';
-// import heartUnliked from '../../assets/images/icons/heart-unliked.svg';
+import heartUnliked from '../../assets/images/icons/heart-unliked.svg';
 import { Cat } from '../../types';
+import CatsContext from '../../context/CatsContext';
 
 interface Props {
   cat: Cat;
 }
 
 export const CatCard: FC<Props> = ({ cat }) => {
-  const { url, breeds } = cat;
+  const { id, url, breeds } = cat;
+  const { favourites, toggleFavourites } = useContext(CatsContext);
+
+  const isFavourite =
+    favourites.find((catItem: Cat) => id === catItem.id) || false;
 
   return (
     <article className="w-60 bg-secondary border-2 rounded-md p-4">
       <div className="flex justify-end">
-        <button className="mb-3 border-2 rounded-md">
-          <img src={heartLiked} alt="Add to favourites" />
+        <button
+          className="mb-3 border-2 rounded-md"
+          onClick={() => toggleFavourites(cat)}
+        >
+          <img
+            src={isFavourite ? heartLiked : heartUnliked}
+            alt="Add to favourites"
+          />
         </button>
       </div>
 
